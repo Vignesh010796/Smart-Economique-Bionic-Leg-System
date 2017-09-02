@@ -1,5 +1,5 @@
 #include<math.h>
-#define publish_delay 1600
+#define publish_delay 1000 //publish data for every 1000milliseconds/1 second
 unsigned int lastPublish = 0;
 
 void setup() {
@@ -14,7 +14,7 @@ void loop() {
     int x_value = analogRead(A0);
     int y_value = analogRead(A1);
     int z_value = analogRead(A2);
-    int a=sqrt(((A0)^2)+((A1)^2+((A2)^2)))
+    int a=sqrt(((A0)^2)+((A1)^2+((A2)^2))); //average acceleration calculation
     Particle.publish("thingSpeakWrite_a", "{ \"1\": \"" + String(a) + "\", \"k\": \"OXNO5VS2HW6WQISH\" }", 60, PRIVATE);
 
 }
